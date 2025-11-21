@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('startPause').addEventListener('click',()=> {
         if(!alarmSound){
             alarmSound=new Audio('alarm.mp3');
+            alarmSound.load(); //preload it
         }
        })
         // ---- VALIDATE INPUT ----
@@ -61,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         pomodoroTime--;                         //if not decrease the timer by 1 second
                         updateTimerDisplay();                   // call updateTimerDisplay() to update the timer on the screen.
                     } else {
-                       
                         clearInterval(timerInterval); //otherwise if time is up, stop the timer.
 
 
@@ -72,9 +72,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         flashcardBtn.style.cursor = "pointer";                  //change the cursor back to pointer to indicate the user can access it.
                         localStorage.setItem('pomodoroComplete', 'true');       //save ethe flag in local storage marking that the pomodoro has been completed.
 
+                            if(alarmSound){
+                                alarmSound.loop=true;
+                                alarmSound.play().catch(err=>
+                                    console.log("Audio blocked: ",err)
+                                )
+                            };
                         setTimeout(() => {
-                            //play the alarm sound
-                            alarmSound.play();
+                        
                             alert("Pomodoro complete! Flashcards unlocked"); 
                             //stop alarm after the user clicks ok
                             alarmSound.pause();
