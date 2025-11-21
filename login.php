@@ -55,7 +55,7 @@ exit;*/
     <title>Log in</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body >
     <header>
         <div class="logo">
             <h1><span>CARD</span>odoro</h1>
@@ -67,6 +67,7 @@ exit;*/
 </div>
     <div class="login-box">
      <h2>LOG IN</h2>
+      <p><i>Stay focused.Stay Connected.</i></p>
         <!-- Show message if email/password incorrect -->
         <?php
          if($check != "") { 

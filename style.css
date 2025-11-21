@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background:linear-gradient(135deg, #FF6B6B, #FFD166);
+    background:linear-gradient(135deg, #ff8c00,#a98cee, #e8906e);
     color: white;
     text-align: center;
     margin: 0;
@@ -94,14 +94,14 @@ nav a {
     padding: 14px 30px;
     border-radius:40px;
     background:#ffffff;
-    color:#FF6B6B;
+    color:#f2791d;
     font-weight: bold;
     font-size:17px;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
 }
 
 .get-started-btn:hover{
-  background: #a10e0e;
+  background: #e99205;
   color:#ffffff;
  
 }
@@ -211,7 +211,7 @@ nav a {
 }
 
 .login-box h2, .signup-box h2 {
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     color: #ffffff;
     font-size: 26px;
     font-weight: bold;
@@ -229,7 +229,7 @@ nav a {
 }
 
 .login-box input:focus, .signup-box input:focus {
-    border:2px solid #ff6b6b;
+    border:2px solid #a19ae6;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
@@ -237,7 +237,7 @@ nav a {
     width: 100%;
     padding: 12px;
     background: #ffffff;
-    color: #FF6B6B;
+    color: #ff5602;
     padding: 10px 20px;
     border: none;
     border-radius: 10px;
@@ -275,7 +275,7 @@ p.login a, p.signup a{
 /*dashboard*/
 body.dashboard {
   min-height: 100vh;
-  background: linear-gradient(135deg, #ffb76b, #ff7c7c);
+  background: linear-gradient(135deg, #e8905c,#a98cee, #e8906c);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -303,7 +303,7 @@ header .logo span{
 
 .hello{
     margin-top: 20px;
-    color: white;
+    color: rgb(255, 255, 255);
     font-size: 1.4rem;
     font-weight: 500;
 }
@@ -311,11 +311,11 @@ header .logo span{
 
 /* background for dashboard*/
 .pomodoro{
-   position: relative;
+  position: relative;
   margin-top: 10px;
   width: 500px;
   height: 350px;
-  background: radial-gradient(circle at top left, #ff9a9e, #db7356);
+  background: radial-gradient(circle at top left, #af119a, #90e0d2);
   border-radius: 100px;
   padding: 40px;
   display: flex;
@@ -323,10 +323,14 @@ header .logo span{
   justify-content: center;
   align-items: center;
   text-align: center;
-  color: white;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(255, 255, 255, 0.2);
   border: 3px solid rgba(255, 255, 255, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.text p{
+    font-family: cursive;
+    margin-top: 20px;
 }
 
 .pomodoro:hover{
@@ -338,6 +342,7 @@ header .logo span{
     font-size: 1.5rem;
     margin-bottom: 10px;
 }
+
 
 input[type="number"]{
     width: 80px;
@@ -495,11 +500,42 @@ input[type="number"]{
     margin-left: 10px;
 }
 
+/*sidebar*/
+.sidebar{
+    position: fixed;
+    top:100px;
+    left: 20px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    color: white;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.sidebar .status{
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.sidebar .label{
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.sidebar .value{
+    display: block;
+    font: 20px;
+    font-weight: 700;
+    margin-top:5px;
+}
 
 /*flashcards*/
 body.flashcard-app {
    min-height: 100vh;
-  background: linear-gradient(135deg, #ffb76b, #ff7c7c);
+ background: linear-gradient(135deg, #e8905c,#a98cee, #e8906c);
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -36,9 +36,12 @@ $user_name=$_SESSION['user_name']; //It fetches username of the user from the se
     <div>
         <label for="pomodoro">Set Time(minutes): <!--label for input-->
         </label>
-        <input type="number" id="pomodoroTime" min="1" value="25"> <!--ensures that only numbers are entered by the user-->
+        <input type="number" id="pomodoroTime" min="1" value="1"> <!--ensures that only numbers are entered by the user-->
 </div>
-<div id="timer">25:00</div>
+<div id="timer">00:00</div>
+<div class="text">
+    <p><i>Stay focused.You got this!</i></p>
+</div>
 <div class="timer-control"> <!--used for controlling the buttons-->
     <button id="startPause">Start</button> <!--used for both start/pause function-->
     <button id="reset">Reset</button><!--It reset the timer-->
@@ -55,6 +58,18 @@ $user_name=$_SESSION['user_name']; //It fetches username of the user from the se
         <button id="addGoalbtn">Add</button><!--button to add goals-->
 </div>
 <ul id="goalList"></ul><!--list the entered goals in unordered form-->
+</div>
+
+<div class="sidebar">
+    <div class="status">
+        <span class="label">Total Study Time</span>
+        <span class="value" id="totalTime">0h 00m</span>
+</div>
+
+<div class="status">
+    <span class="label">Streak</span>
+    <span class="value" id="streakDays">0 days</span>
+</div>
 </div>
 
 <script src="script.js"></script><!--link to javascript file for the timer to run-->

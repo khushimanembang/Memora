@@ -61,8 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         pomodoroTime--;                         //if not decrease the timer by 1 second
                         updateTimerDisplay();                   // call updateTimerDisplay() to update the timer on the screen.
                     } else {
-                        alarmSound.play();
-                        clearInterval(timerInterval);           //otherwise if time is up, stop the timer.
+                       
+                        clearInterval(timerInterval); //otherwise if time is up, stop the timer.
+
 
                         //  Unlock flashcards after Pomodoro
                         flashcardBtn.disabled = false;                          //The flashcard can be clicked
@@ -276,3 +277,4 @@ document.addEventListener('DOMContentLoaded', () => {
         showQuestion();
     }
 });
+
