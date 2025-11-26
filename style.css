@@ -7,8 +7,9 @@
 
 body {
     font-family: Arial, sans-serif;
-    background:linear-gradient(135deg, #ff8c00,#a98cee, #e8906e);
-    color: white;
+    background: linear-gradient(135deg, #756AB6,#AC87C5,#E0AED0,#FFE5E5);
+
+    color: rgb(12, 0, 51);
     text-align: center;
     margin: 0;
     padding: 0;
@@ -94,14 +95,14 @@ nav a {
     padding: 14px 30px;
     border-radius:40px;
     background:#ffffff;
-    color:#f2791d;
+    color:#ffa600;
     font-weight: bold;
     font-size:17px;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
 }
 
 .get-started-btn:hover{
-  background: #e99205;
+  background:#ffa600;
   color:#ffffff;
  
 }
@@ -149,7 +150,7 @@ nav a {
 
 .features h2{
     font-size: 45px;
-    color: #ffeab9;
+    color: #0b4a5f;
     margin-bottom: 50px;
 }
 
@@ -275,7 +276,8 @@ p.login a, p.signup a{
 /*dashboard*/
 body.dashboard {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e8905c,#a98cee, #e8906c);
+  background: linear-gradient(135deg, #7c67f4,#dba5ff,#f1c8e4,#ffacac);
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -315,7 +317,7 @@ header .logo span{
   margin-top: 10px;
   width: 500px;
   height: 350px;
-  background: radial-gradient(circle at top left, #af119a, #90e0d2);
+  background: radial-gradient(circle at top left, #fcadf1, #aa97d4);
   border-radius: 100px;
   padding: 40px;
   display: flex;
@@ -535,7 +537,7 @@ input[type="number"]{
 /*flashcards*/
 body.flashcard-app {
    min-height: 100vh;
- background: linear-gradient(135deg, #e8905c,#a98cee, #e8906c);
+ background: linear-gradient(135deg, #7c67f4,#dba5ff,#f1c8e4,#ffacac);
   display: flex;
   flex-direction: column;
   align-items: center;
