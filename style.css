@@ -7,7 +7,7 @@
 
 body {
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #756AB6,#AC87C5,#E0AED0,#FFE5E5);
+   background: linear-gradient(135deg, #7c67f4,#dba5ff,#f1c8e4,#ffacac);
 
     color: rgb(12, 0, 51);
     text-align: center;
@@ -24,7 +24,7 @@ header {
      box-shadow: 0 4px 12px rgba(181, 104, 104, 0.05);
 }
 .logo h1{
-     font-family: "Poppins", sans-serif;
+     font-family: Arial, Helvetica, sans-serif;
     font-size: 32px;
     font-weight: 700;
     margin: 0;
@@ -32,6 +32,7 @@ header {
 
 .logo h1 span{
    color: #FFD166;
+   font-family: cursive;
 }
 
 nav a {
@@ -138,7 +139,7 @@ nav a {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 .info-text h2{
-    color: #ffffff;
+    color: #003550;
     margin-bottom: 12px;
 }
 

@@ -58,7 +58,7 @@ exit;*/
 <body >
     <header>
         <div class="logo">
-            <h1><span>CARD</span>odoro</h1>
+            <h1><span>MEM</span>ora</h1>
     </div>
 </header>
   <section class=login>

@@ -18,7 +18,7 @@ $user_name=$_SESSION['user_name']; //It fetches username of the user from the se
 <body class="dashboard">
      <header>
         <div class="logo">
-            <h1><span>CARD</span>odoro</h1>
+            <h1><span>MEM</span>ora</h1>
 </div>
  <nav class="navbar">
     <ul>

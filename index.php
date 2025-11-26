@@ -9,7 +9,7 @@
 <body>
     <header>
         <div class="logo">
-            <h1><span>CARD</span>odoro</h1> <!--logo on the header-->
+            <h1><span>MEM</span>ora</h1> <!--logo on the header-->
     </div>
     <div class="buttons">
             <a href="login.php" class="signin-btn">Sign in</a> <!--link to signin page-->

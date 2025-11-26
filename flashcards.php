@@ -8,7 +8,7 @@
 </head>
 <body class="flashcard-app">
   <header>
-    <h1><span>CARD</span>odoro</h1> <!--Logo-->
+    <h1><span>MEM</span>ora</h1> <!--Logo-->
     <nav class="navbar">
     <ul>
         <a href="dashboard.php">Home</a> <!--refers to the dashboard.php-->
