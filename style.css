@@ -36,17 +36,18 @@ header {
 }
 
 nav a {
-    color: white;
+    color: rgb(255, 87, 154);
     text-decoration: none;
     font-weight: bold;
     padding: 8px 15px;
     border-radius: 6px;
-    background-color: rgba(0,0,0,0.2);
+    background-color: rgb(255, 255, 255);
     transition: background-color 0.3s ease;
   }
 
   nav a:hover {
-    background-color: rgba(0,0,0,0.4);
+    background-color: rgb(255, 87, 154);
+    color:White;
   }
 
 .buttons{
@@ -503,37 +504,8 @@ input[type="number"]{
     margin-left: 10px;
 }
 
-/*sidebar*/
-.sidebar{
-    position: fixed;
-    top:100px;
-    left: 20px;
-    width: 200px;
-    padding: 20px;
-    border-radius: 20px;
-    background: rgba(255,255,255,0.15);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    color: white;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
 
-.sidebar .status{
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-}
 
-.sidebar .label{
-    font-size: 15px;
-    opacity: 0.8;
-}
-
-.sidebar .value{
-    display: block;
-    font: 20px;
-    font-weight: 700;
-    margin-top:5px;
-}
 
 /*flashcards*/
 body.flashcard-app {

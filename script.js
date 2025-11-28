@@ -2,75 +2,95 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // ===== POMODORO TIMER =====
     //const holds the reference to the html,...variable points to that element in DOM
-    const timerDisplay = document.getElementById('timer');//constant variable that stores reference to the HTML element with id 'timer'.
+    /*constant variable that stores reference to the HTML element with id 'timer'.*/
+    const timerDisplay = document.getElementById('timer');
     const startPauseBtn = document.getElementById('startPause');
     const resetBtn = document.getElementById('reset');
     const pomodoroInput = document.getElementById('pomodoroTime');
     const flashcardBtn = document.getElementById('flashcardBtn');
     
 
-    if (timerDisplay && startPauseBtn && resetBtn && pomodoroInput && flashcardBtn) { //checks if all the element exist on the page befor running the code
-        let pomodoroTime =0;                                                         //variable to store pomodoro timer duration in minutes and seconds
-        let timerInterval = null;                                                    //variable to store interval ID returned by setInterval (start/stop the timer)
-        let isRunning = false;                                                       //check if the timer is running or not
-        //for sound effect
+    /*----checks if all the element exist on the page befor running the code--------*/
+    if (timerDisplay && startPauseBtn && resetBtn && pomodoroInput && flashcardBtn) { 
+        let pomodoroTime =0; /* variable to store pomodoro timer duration in minutes and seconds   */                                                     
+        let timerInterval = null; /* Store interval ID returned by setInterval (start/stop the timer)*/
+         /*check if the timer is running or not*/
+        let isRunning = false;   
+
+        /*for sound effect*/
         let alarmSound;
         document.getElementById('startPause').addEventListener('click',()=> {
         if(!alarmSound){
             alarmSound=new Audio('alarm.mp3');
-            alarmSound.load(); //preload it
+            alarmSound.load(); /*preload it*/
         }
        })
-        // ---- VALIDATE INPUT ----
-    function isValidInput() { //ensures that the user enter the valid input
+
+        /* ---- VALIDATE INPUT ----*/
+    function isValidInput() { 
+        /*ensures that the user enter the valid input*/
         const value = pomodoroInput.value.trim();
 
         if (value === "" || isNaN(value) || parseInt(value) <= 0) {
-            alert("⚠ Please enter a valid number of minutes."); //if it entered null, less than 0 or other values, shows alert message
+            /*if it entered null, less than 0 or other values, shows alert message*/
+            alert("⚠ Please enter a valid number of minutes."); 
             return false;
         }
-        return true; //if the input is correct, it returns true
+        /*if the input is correct, it returns true*/
+        return true; 
     }
 
         function updateTimerDisplay() {
-            const minutes = String(Math.floor(pomodoroTime / 60)).padStart(2, '0'); //padstart change the number form 2 to 02
+            const minutes = String(Math.floor(pomodoroTime / 60)).padStart(2, '0'); /*--padstart change the number form 2 to 02--*/
             const seconds = String(pomodoroTime % 60).padStart(2, '0');
-            timerDisplay.textContent = `${minutes}:${seconds}`; //display the time in minutes:seconds form
+            /*display the time in minutes:seconds form*/
+            timerDisplay.textContent = `${minutes}:${seconds}`; 
         }
 
-        //function to start and pause the timer
+        
+        /*----------------function to start and pause the timer---------------------------------------------*/
         function startPauseTimer() {
 
-            if(!isRunning){                                     //check if the timer is not running
-                if(!isValidInput())                              //If the user did not enter the correct input it return it to isValidInput() function
+        /*check if the timer is not running*/
+            if(!isRunning){                                  
+                if(!isValidInput())           
+                    //returns to isValidInput() function                   
                     return;
-                pomodoroTime= parseInt(pomodoroInput.value) * 60; //converts the input value from minute to seconds and store it in pomodoroTime.
+                pomodoroTime= parseInt(pomodoroInput.value) * 60; /*converts the input value from minute to seconds and store it in pomodoroTime.*/
             }
-            if (isRunning) {                                        //check if the timer is running
-                clearInterval(timerInterval);                       //stops the timer by clearing the interval
-                startPauseBtn.textContent = 'Start';                 //changes the button back to start to let the user know that the timer has been paused
+
+             //check if the timer is running
+            if (isRunning) {            
+                 //stops the timer by clearing the interval                           
+                clearInterval(timerInterval);   
+                 //changes the button back to start to let the user know that the timer has been paused                   
+                startPauseBtn.textContent = 'Start';                
             } else {
                 //  Lock flashcards at start of a new Pomodoro
-                flashcardBtn.disabled = true;                   //disables the flashback button so it cannot be clicked
-                flashcardBtn.textContent = "Go to Flashcards";  //button containing the text
-                flashcardBtn.style.opacity = "0.5";             //opacity of the button to make it look faded
-                flashcardBtn.style.cursor = "not-allowed";      //change the curstor to indicate that user cannot access the button 
-                localStorage.removeItem('pomodoroComplete');     //removes the flag to marks timer has been completed, so it resets for new session
+                flashcardBtn.disabled = true;   /*disables the flashback button*/          
+                flashcardBtn.textContent = "Go to Flashcards"; 
+                flashcardBtn.style.opacity = "0.5"; /*opacity of the button to make it look faded*/
+                flashcardBtn.style.cursor = "not-allowed";    
+                localStorage.removeItem('pomodoroComplete');     /*removes the flag to mark timer has been completed, so it resets for new session*/
 
-                timerInterval = setInterval(() => {             //stores the interval ID in timerInterval so it can be cleared later
-                    if (pomodoroTime > 0) {                     //check if the timer has reached 0 or not 
-                        pomodoroTime--;                         //if not decrease the timer by 1 second
-                        updateTimerDisplay();                   // call updateTimerDisplay() to update the timer on the screen.
+
+                /*stores the interval ID in timerInterval so it can be cleared later*/
+                timerInterval = setInterval(() => {             
+                    if (pomodoroTime > 0) {                     
+                        pomodoroTime--; 
+                        /*call updateTimerDisplay() to update the timer on the screen.*/                        
+                        updateTimerDisplay();       
                     } else {
-                        clearInterval(timerInterval); //otherwise if time is up, stop the timer.
+                        /*otherwise if time is up, stop the timer.*/
+                        clearInterval(timerInterval); 
 
 
-                        //  Unlock flashcards after Pomodoro
-                        flashcardBtn.disabled = false;                          //The flashcard can be clicked
+                        /*-----------Unlock flashcards after Pomodoro----------------------------*/
+                        flashcardBtn.disabled = false;                          
                         flashcardBtn.textContent = "Go to Flashcards";
-                        flashcardBtn.style.opacity = "1";                       //opacity to make it visible
-                        flashcardBtn.style.cursor = "pointer";                  //change the cursor back to pointer to indicate the user can access it.
-                        localStorage.setItem('pomodoroComplete', 'true');       //save ethe flag in local storage marking that the pomodoro has been completed.
+                        flashcardBtn.style.opacity = "1";                       
+                        flashcardBtn.style.cursor = "pointer";                  
+                        localStorage.setItem('pomodoroComplete', 'true'); /*save ethe flag in local storage marking that the pomodoro has been completed.*/
 
                             if(alarmSound){
                                 alarmSound.loop=true;
@@ -81,47 +101,51 @@ document.addEventListener('DOMContentLoaded', () => {
                         setTimeout(() => {
                         
                             alert("Pomodoro complete! Flashcards unlocked"); 
-                            //stop alarm after the user clicks ok
+                            /*stop alarm after the user clicks ok*/
                             alarmSound.pause();
                             alarmSound.currentTime=0;
                             
-                        }, 50);                                                 //shows alert after 50 millisecond that timer has been completed
+                        }, 50 /*shows alert after 50 millisecond that timer has been completed*/);                                                 
 
-                        startPauseBtn.textContent = 'Start';                    //reset the start/pause button text
-                        isRunning = false;                                      //indicates that the timer is not running
+                        /*reset the start/pause button text*/
+                        startPauseBtn.textContent = 'Start';                    
+                        isRunning = false;  /*indicates that the timer is not running*/
                     }
                 }, 1000);                                                       //ends the setInterval callback that runs every 1 second
-                startPauseBtn.textContent = 'Pause';                            //if the timer is running change the button text to pause
+
+                /*if the timer is running change the button text to pause*/
+                startPauseBtn.textContent = 'Pause';                         
             }
-            isRunning = !isRunning;                                             //toggles the isRunning flag, if it was false it becomes true, if it was true it becomes false
+             /*toggles the isRunning flag, if it was false it becomes true, if it was true it becomes false*/
+            isRunning = !isRunning;                                            
         }
     
 
        
-        //function to reset the timer
+        /*---------------function to reset the timer---------------------*/
         function resetTimer() {
-            //function to check if the entered input is valid
+            /*function to check if the entered input is valid*/
             if(!isValidInput()){ 
                 pomodoroTime=0;
                 updateTimerDisplay();
                 return;
             }
-            clearInterval(timerInterval);                       //stops the timer
+            clearInterval(timerInterval); /*  stops the timer  */            
             pomodoroTime = parseInt(pomodoroInput.value) * 60;  //convert the minutes to seconds
-            updateTimerDisplay();                               //call the function to update the timer on the screen
-            startPauseBtn.textContent = 'Start';                //change the pause button back to start.
-            isRunning = false;                                  //indicates the timer has been paused
+            updateTimerDisplay();                              
+            startPauseBtn.textContent = 'Start';               
+            isRunning = false;                           
 
-            // Lock flashcards
-            flashcardBtn.disabled = true;                       //disable the flashcard button
+            /* Lock flashcards*/
+            flashcardBtn.disabled = true;                       /*disable the flashcard button*/
             flashcardBtn.textContent = "Go to Flashcards";
             flashcardBtn.style.opacity = "0.5";
             flashcardBtn.style.cursor = "not-allowed";
             localStorage.removeItem('pomodoroComplete');
         }
         
-
-        pomodoroInput.addEventListener('change', () => {             //runs the code whenever user changes the input value
+         /*runs the code whenever user changes the input value*/
+        pomodoroInput.addEventListener('change', () => {            
             if(!isValidInput()){
                 pomodoroTime=0;
                 updateTimerDisplay();
@@ -133,22 +157,30 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
        
-        startPauseBtn.addEventListener('click', startPauseTimer);   //runs the startPause function once the start/Pause button is clicked
-        resetBtn.addEventListener('click', resetTimer);             //runs the reset function once the reset button is clicked
+        /*runs the startPause function once the start/Pause button is clicked*/
+        startPauseBtn.addEventListener('click', startPauseTimer);   
+
+        /*runs the reset function once the reset button is clicked*/
+        resetBtn.addEventListener('click', resetTimer);             
 
         flashcardBtn.addEventListener('click', () => {
-            if (!flashcardBtn.disabled) window.location.href = "flashcards.php"; //redirects to the flashcard page once the flashcard button is clicked
+            if (!flashcardBtn.disabled) window.location.href = "flashcards.php"; 
         });
 
-        updateTimerDisplay();                       //initialize the timer dispaly so user sees 00:00
+        updateTimerDisplay();                       /*initialize the timer dispaly so user sees 00:00*/
     }
 
+
+
     // ===== GOALS =====
-    const goalInput = document.getElementById('goalInput'); //constant varaible that refers to the HTML element with id goalInput
+    /*constant varaible that refers to the HTML element with id goalInput*/
+    const goalInput = document.getElementById('goalInput'); 
     const addGoalBtn = document.getElementById('addGoalbtn');
     const goalList = document.getElementById('goalList');
 
-    if (goalInput && addGoalBtn && goalList) {              //check if these element exist in the page before running the code
+
+    /*check if these element exist in the page before running the code*/
+    if (goalInput && addGoalBtn && goalList) {              
         //function to create goal
         function createGoalItem(text) {
             const li = document.createElement('li');
@@ -159,21 +191,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const checkBtn = document.createElement('span');
             checkBtn.innerHTML = '✔️';
             checkBtn.classList.add('goal-check');
+
+            /*once the user click th icon, the goal will be line crossed */
             checkBtn.addEventListener('click', () => {
-                spanText.classList.toggle('completed');            //once the user click th icon, the goal will be line crossed 
+                spanText.classList.toggle('completed');            
             });
 
             const deleteBtn = document.createElement('span');
             deleteBtn.innerHTML = '🗑️';
             deleteBtn.classList.add('goal-delete');
-            deleteBtn.addEventListener('click', () => li.remove());   //if the user click the icon delete, the goal will be removed
+            /*if the user click the icon delete, the goal will be removed*/
+            deleteBtn.addEventListener('click', () => li.remove());   
 
             li.appendChild(spanText);
             li.appendChild(checkBtn);
             li.appendChild(deleteBtn);
             goalList.appendChild(li);
         }
-       //executes addGoalBtn once the add button is clicked.
+       /*executes addGoalBtn once the add button is clicked.*/
         addGoalBtn.addEventListener('click', () => {
             const goalText = goalInput.value.trim();
             if (goalText) {
@@ -182,21 +217,28 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+        /*if the user press enter in keyboar, it adds the goal*/
         goalInput.addEventListener('keypress', (e) => {      
-            if (e.key === 'Enter') addGoalBtn.click();            //if the user press enter in keyboar, it adds the goal
+            if (e.key === 'Enter') addGoalBtn.click();            
         });
     }
 
-    // ===== FLASHCARDS (Quizlet-style) =====
+
+    /*============ FLASHCARDS (Quizlet-style) ============================*/
     const createSection = document.getElementById('createSetSection');
     const quizSection = document.getElementById('quizSection');
     const addCardBtn = document.getElementById("addCardBtn");
     const createSetBtn = document.getElementById("createSetBtn");
     const cardsContainer = document.getElementById("cardsContainer");
 
+
+
+    
+    /*check if these element exist in the page before running the code*/
     if (addCardBtn && createSetBtn && cardsContainer) {
         let flashcards = [];
 
+        /*Place to enter term and definition for the cards*/
         addCardBtn.addEventListener("click", () => {
             const cardDiv = document.createElement("div");
             cardDiv.classList.add("card-input");
@@ -233,15 +275,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== QUIZ FUNCTION =====
-    function startQuiz(flashcards) {
-        let index = 0;
+    /*=============== QUIZ FUNCTION ==================================*/
+
+    /*Function for the quiz part*/
+    function startQuiz(flashcards) { 
+        let index = 0;  /*current flashcard*/
         const quizTerm = document.getElementById("quizTerm");
         const option1 = document.getElementById("option1");
         const option2 = document.getElementById("option2");
         const nextBtn = document.getElementById("nextBtn");
         const restartBtn = document.getElementById("restartBtn");
 
+        /*Function to show the question*/
         function showQuestion() {
             if (index >= flashcards.length) {
                 quizTerm.textContent = "🎉 Quiz Complete!";
@@ -261,6 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
             option2.textContent = options[1];
         }
 
+
+        /*Function to change the color of the option if it is wrong or right*/
         option1.onclick = option2.onclick = e => {
             const correct = flashcards[index].def;
             if (e.target.textContent === correct) {
@@ -271,6 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn.classList.remove("hidden");
         };
 
+        /*Button to move to next card.*/
         nextBtn.onclick = () => {
             index++;
             option1.style.background = option2.style.background = "#ffe600";
@@ -278,6 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
             showQuestion();
         };
 
+        /*Restart the quiz with new questions*/
         restartBtn.onclick = () => location.reload();
         showQuestion();
     }

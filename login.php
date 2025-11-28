@@ -1,50 +1,65 @@
 <!--backend part for login form-->
 <?php
-session_start(); //start session to store user info
-require 'db.php'; //database connection
+//start session to store user info
+session_start(); 
+ //database connection
+require 'db.php';
 /*echo '<pre>';
 print_r($_POST);
 echo '</pre>';
 exit;*/
 
-
-   $conn= new mysqli("localhost","root","","productivity");     //it connects to the database
+    //it connects to the database
+   $conn= new mysqli("localhost","root","","productivity");     
    if($conn->connect_error){
-       die("Connection failed: ". $conn->connect_error);        //if connection fail, it shows error message
+       die("Connection failed: ". $conn->connect_error);    //if connection fail, it shows error message
    }
-   $check="";   //store error/success message
+   //store error/success message
+   $check="";   
 
-   if(isset($_POST['login'])){             //checks if login button is clicked 
-       $email =trim( $_POST['email']);    //if it is clicked, it fetches email entered by the user
-       $password= $_POST['password'];    //it fetches password entered by the user
+    //checks if login button is clicked 
+   if(isset($_POST['login'])){    
+       //if it is clicked, it fetches email and pssword entered by the user        
+       $email =trim( $_POST['email']);    
+       $password= $_POST['password'];    
 
        //prepare sql to prevent sql injection
-       $stmt= $conn->prepare("SELECT id, name, email, password FROM users WHERE email=?");  //statement to get id, name ,email and pass form the users table where the email matches the value
-       $stmt->bind_param("s",$email);                                                       //"s" means string...puts the email into the query
-       $stmt->execute();                                                                   //executes the prepared SQL statement
-       $stmt->store_result();                                                              //it saves the query results for later usage
+       //statement to get id, name ,email and pass form the users table where the email matches the value
+       $stmt= $conn->prepare("SELECT id, name, email, password FROM users WHERE email=?");  
+       //"s" means string...puts the email into the query
+       $stmt->bind_param("s",$email);                                                     
+       $stmt->execute();                                                              
+       $stmt->store_result();                                                             
 
-       if($stmt->num_rows>0){                                  //checks if query returned any rows (i.e.  a user with the entered email exist)
-        $stmt->bind_result($id,$name,$db_email,$db_password); //It links the column from the result to the PHP variables
-        $stmt->fetch();                                       //grabs the actual value of id, name, email and pass into PHP variables
+     //checks if query returned any rows (i.e.  a user with the entered email exist)
+       if($stmt->num_rows>0){ 
+        //It links the column from the result to the PHP variables                                
+        $stmt->bind_result($id,$name,$db_email,$db_password); 
+        //grabs the actual value of id, name, email and pass into PHP variables
+        $stmt->fetch();                                       
 
         if($password===$db_password){
             //password correct ->redirect to homepage
-             $_SESSION['user_id'] = $id;            //it stores user id in session variable
-            $_SESSION['user_name'] = $name;        //stores username in session variable
-            $_SESSION['user_email'] = $db_email;  //stores user email in session variable
-            header("Location:dashboard.php");    //once it is stored, it redirects to dashboard.php
-            exit();                             //ensure no further code is executed after the code is redirected
+             //it stores user id,username,email in session variable
+             $_SESSION['user_id'] = $id;           
+            $_SESSION['user_name'] = $name;       
+            $_SESSION['user_email'] = $db_email; 
+            header("Location:dashboard.php");  
+            //ensure no further code is executed after the code is redirected 
+            exit();                             
        }else{
-        $check="Incorrect password.";          //Check variable stores the error message if password is incorrect
+        $check="Incorrect password.";      
        }
     }else{
-        $check="No user found with this email."; //stores error message if email not found
+        //stores error message if email not found
+        $check="No user found with this email."; 
 
     }
-    $stmt->close(); //close statement
+     //close statement
+    $stmt->close();
    }
-    $conn->close(); //disconnect from server/ database
+    //disconnect from server/ database
+    $conn->close();
 ?>
 <!--html part for login form-->
 <!DOCTYPE html>
@@ -75,12 +90,17 @@ exit;*/
              } 
         ?>
 
-     <form action="" method="post"> <!--POST method sends the data safely-->
-        <input type="email" name="email" placeholder="Email" required><br> <!--it ensures that the email is entered-->
-        <input type="password" name="password" placeholder="password" required><br><!--Ensure the password is entered-->
-        <button type="submit" name="login">Log in</button> <!--SUbmit button to login-->
+<!--POST method sends the data safely-->
+     <form action="" method="post"> 
+        <!--it ensures that the email,password is entered-->
+        <input type="email" name="email" placeholder="Email" required><br> 
+        <input type="password" name="password" placeholder="password" required><br>
+        <!--SUbmit button to login-->
+        <button type="submit" name="login">Log in</button> 
     </form>
-    <p class="signup">New here? <a href="signup.php">Sign up</a></p> <!--it refers to signup.php for new users-->
+
+<!--it refers to signup.php for new users-->
+    <p class="signup">New here? <a href="signup.php">Sign up</a></p> 
    </div>
     </section>
     
