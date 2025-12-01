@@ -20,6 +20,10 @@
 </ul>
 </nav>
 </header>
-
+<section class="work">
+  <div class="tut1">
+   <img src="images/work1.png" alt="tutorial"  class="img1">
+   <p> "1. Click on Get Started button."</p>
+</div>
 </body>
 </html>

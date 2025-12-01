@@ -12,7 +12,7 @@
             <h1><span>MEM</span>ora</h1>
      </div>
       <div class="title">
-        <h1>ABOUT US </h1>
+        <h2>ABOUT US </h2>
 </div>
   <nav class="navbar">
     <ul>

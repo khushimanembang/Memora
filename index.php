@@ -28,6 +28,7 @@
             <a href="signup.php" class="signup-btn">Sign Up</a>
     </div>
 </header>
+
 <section class="hero"> <!--below header section-->
     <div class="hero-text">
         <h1>Your all-in-one productivity tool for students.</h1>
