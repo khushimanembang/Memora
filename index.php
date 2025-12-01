@@ -13,6 +13,15 @@
         <div class="logo">
             <h1><span>MEM</span>ora</h1>
     </div>
+
+    <nav class="More-info">
+        <ul class="nav-links">
+            <li><a href="work.php">HOW IT WORKS?</a></li>
+            <li><a href="about.php">ABOUT</a></li>
+            <li><a href="dev-noes.php">DEVLOPER NOTES</a></li>
+</ul>
+</nav>
+     
     <div class="buttons">
              <!--link to signin and signup page-->
             <a href="login.php" class="signin-btn">Sign in</a> 
