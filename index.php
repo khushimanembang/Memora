@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landing page</title>
     <!--link to css for frontend styling-->
-    <link rel="stylesheet" href="style.css"> 
+    <link rel="stylesheet" href="css/style.css"> 
 </head>
 <body>
     <header>
@@ -18,7 +18,7 @@
         <ul class="nav-links">
             <li><a href="work.php">HOW IT WORKS?</a></li>
             <li><a href="about.php">ABOUT</a></li>
-            <li><a href="dev-noes.php">DEVLOPER NOTES</a></li>
+            <li><a href="Dev.php">DEVLOPER NOTES</a></li>
 </ul>
 </nav>
      
